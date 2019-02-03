@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="mainController">
+
+<head>
+  <title>Playbook Generator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../style/index.css">
+  <script src="../lib/jquery/jquery.min.js"></script>
+  <script src="../lib/js/bootstrap/bootstrap.min.js"></script>
+  <script src="../lib/js/angularjs/angular.min.js"></script>
+  <script src="../entrypoint-controller/index.js"></script>
+
+  <script src="../component/header/header.js"></script>
+  <script src="../component/footer/footer.js"></script>
+  <script src="../component/main/main.js"></script>
+  <script src="../component/form/form.js"></script>
+  <script src="../component/review/review.js"></script>
+
+</head>
+
+<body>
+
+  <div ng-include="'../component/header/header.html'"></div>
+  <div class="main-body" ng-include="'../component/main/main.html'"></div>
+  <div ng-include="'../component/footer/footer.html'"></div>
+
+</body>
+
+</html>

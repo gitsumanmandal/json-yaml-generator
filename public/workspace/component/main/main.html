@@ -1,0 +1,4 @@
+<div ng-controller="mainController" ng-init="mainLoaded()">
+    <div ng-show="showForm" ng-include="'../component/form/form.html'"></div>
+    <div ng-repeat="formData in reviewData" ng-show="showReview" ng-include="'../component/review/review.html'"></div>
+</div>

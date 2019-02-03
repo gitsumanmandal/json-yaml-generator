@@ -1,0 +1,210 @@
+<div ng-controller="formController" ng-init="formLoaded()">
+    <div class="row">
+        <div class="col-md-8 col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                    </th>
+                                    <th>
+                                        <label>KEY</label>
+                                    </th>
+                                    <th>
+                                        <label>VALUE</label>
+                                    </th>
+                                    <th>
+                                        <label>IS VALUE AN OBJECT</label>
+                                    </th>
+                                    <th>
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in row">
+                                    <td>
+                                        <label ng-bind="data.rowId+1"></label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" ng-attr-id="key_{{data.rowId}}" ng-model="data.rowKey" required/>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" ng-attr-id="value_{{data.rowId}}" ng-model="data.rowValue" />
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" ng-attr-id="isObject_{{data.rowId}}" ng-model="data.isValueObject" />
+                                    </td>
+                                    <td>
+                                        <button ng-attr-id="removeButton_{{data.rowId}}" class="btn cz-secondary-button" ng-click="remove(data)">
+                                            <label>REMOVE</label>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button ng-show="data.isLast" ng-attr-id="addButton_{{data.rowId}}" class="btn cz-primary-button" ng-click="addSibling()">
+                                            <label>ADD NEW</label>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <button type="submit" id="generateButton" class="btn cz-generate-button" ng-click="generateModal()">
+                                    <label>GENERATE PLAYBOOK</label>
+                                </button>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <button id="generateButton" class="btn cz-generate-button" ng-click="reset()">
+                                    <label>RESET</label>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+            <div class="panel panel-default right-box">
+                <div class="navbar navbar-expand-sm navbar-dark fixed-top app-header-div">
+                    <div class="col-2 col-sm-2">
+                    </div>
+                    <div class="col-10 col-sm-10">
+                        <h5 class="app-header-title" ng-bind="resourceObject.repoHeaderName"></h5>
+                    </div>
+                </div>
+                <div class="panel-cz-body" ng-repeat="repo in repository">
+                    <div class="repo-card">
+                        <div class="col-md-4 col-lg-4" title="Show Details" ng-click="showDetails(repo.name, repo.description)">
+                            <label ng-bind="repo.name"></label>
+                            <input class="idClass" id="{{repo.id}}" ng-model="repo.id" readonly/>
+                        </div>
+                        <div class="col-md-2 col-lg-2">
+                            <button title="Download" class="cz-panel-btn btn cz-primary-button" ng-click="callDownloadModal(repo.id)">
+                                <i class="fa fa-cloud-download cz-icon"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-2 col-lg-2">
+                            <button title="View in other tab" class="cz-panel-btn btn cz-primary-button" ng-click="view(repo.id)">
+                                <i class="fa fa-share cz-icon"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-2 col-lg-2">
+                            <button title="Copy ID" class="cz-panel-btn btn cz-primary-button" ng-click="setCopy(repo.id)">
+                                <i class="fa fa-clone cz-icon"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-2 col-lg-2">
+                            <button title="Delete" class="cz-panel-btn btn cz-primary-button" ng-click="callRemoveModal(repo.id)">
+                                <i class="fa fa-trash cz-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="downloadModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <button class="btn cz-drop-button" ng-click="downloadFile('json')">
+                        <label>DOWNLOAD JSON</label>
+                    </button>
+                    <button class="btn cz-drop-button" ng-click="downloadFile('yaml')">
+                        <label>DOWNLOAD YAML</label>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="removeModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Are you sure, you want to delete the item?</label>
+                    <button class="btn cz-drop-button" ng-click="removeTask()">
+                        <label>YES</label>
+                    </button>
+                    <button class="btn cz-drop-button" data-dismiss="modal">
+                        <label>NO</label>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="generateModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="cz-margin-bottom-15 form-control" id="taskName" ng-model="taskName" placeholder="Enter the task name"
+                        required />
+                    <input type="text" class="cz-margin-bottom-15 description-area form-control" id="taskDescription" ng-model="taskDescription"
+                        placeholder="Enter the task description" />
+                    <button class="btn cz-drop-button" ng-click="generate()">
+                        <label>GENERATE</label>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="viewTaskModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="cz-margin-bottom-15 form-control" id="clickedTaskName" ng-model="clickedTaskName" disabled readonly/>
+                    <input type="text" class="cz-margin-bottom-15 description-area form-control" id="clickedTaskDescription" ng-model="clickedTaskDescription"
+                        disabled readonly/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <a hidden id="anchorDownload" href="#" download></a>
+    <a hidden id="anchorTarget1" href="#" target="_blank"></a>
+
+</div>

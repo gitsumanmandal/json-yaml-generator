@@ -1,0 +1,113 @@
+<div ng-controller="reviewController">
+    <div class="row">
+        <div class="col-md-8 col-lg-8">
+            <!--Start of nfs -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                    <label ng-bind="resourceObject.nfs"></label>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.nfs"></span>
+                </div>
+            </div>
+            <!--End of nfs -->
+
+            <!--Start of scm -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                    <label ng-bind="resourceObject.scm"></label>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.scm"></span>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.ip1"></span>
+                </div>
+            </div>
+            <!--End of scm -->
+
+            <!--Start of buildServer -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                    <label ng-bind="resourceObject.buildServer"></label>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.buildServer"></span>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.ip2"></span>
+                </div>
+            </div>
+            <!--End of buildServer -->
+
+            <!--Start of staticCodeAnalysis -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                    <label ng-bind="resourceObject.staticCodeAnalysis"></label>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.staticCodeAnalysis"></span>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.ip3"></span>
+                </div>
+            </div>
+            <!--End of staticCodeAnalysis -->
+
+            <!--Start of binaryManagement -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                    <label ng-bind="resourceObject.binaryManagement"></label>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.binaryManagement"></span>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.ip4"></span>
+                </div>
+            </div>
+            <!--End of binaryManagement -->
+
+            <!--Start of monitoring -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                    <label ng-bind="resourceObject.monitoring"></label>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.monitoring"></span>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <span ng-bind="formData.ip5"></span>
+                </div>
+            </div>
+            <!--End of monitoring -->
+
+            <!--Start of buttons -->
+            <div class="col-md-12 col-lg-12 cz-margin-bottom-15">
+                <div class="col-md-2 col-lg-2">
+                </div>
+                <div class="col-md-8 col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 no-left-padding">
+                            <button ng-disabled="processed" type="button" class="button-property btn btn-primary" ng-click="back()">
+                                <label ng-bind="resourceObject.back"></label>
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-lg-6 no-right-padding">
+                            <button ng-disabled="processed" type="submit" class="button-property btn btn-primary" ng-click="confirm()">
+                                <label ng-bind="resourceObject.confirm"></label>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End of buttons -->
+
+        </div>
+        <div ng-show="processed" class="col-md-3 col-lg-3 resultant">
+            <label ng-bind="resourceObject.downloadLinkInfo"></label>
+            <a class="button-property btn btn-primary linkButton" href="http://localhost:5000/yml/environment.yml" download ng-bind="resourceObject.downloadLink"></a>
+            <a class="button-property btn btn-primary linkButton" href="http://localhost:5000/workspace/entrypoint-view/index.html" target="_self" ng-bind="resourceObject.goback"></a>
+        </div>
+    </div>
+</div>
