@@ -39,5 +39,18 @@ This is a Free Heroku App Server
 # Summary
 One can use this tool for above mentioned purpose as well as for education of Full Stack Application Development using Node JS, Express JS, Angular JS
 
+# Screen Shots
+## Screen shot 1
+![App Screen 1](https://github.com/gitsumanmandal/json-yaml-generator/blob/master/screen-shots/app-screen-1.PNG)
+
+## Screen shot 2
+![App Screen 1](https://github.com/gitsumanmandal/json-yaml-generator/blob/master/screen-shots/app-screen-2.PNG)
+
+## Screen shot 3
+![App Screen 1](https://github.com/gitsumanmandal/json-yaml-generator/blob/master/screen-shots/app-screen-3.PNG)
+
+## Screen shot 4
+![App Screen 1](https://github.com/gitsumanmandal/json-yaml-generator/blob/master/screen-shots/app-screen-4.PNG)
+
 # Author
 Suman Mandal
