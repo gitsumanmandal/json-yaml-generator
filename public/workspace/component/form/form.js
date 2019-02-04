@@ -42,7 +42,7 @@ app.controller('formController', function ($scope, $http) {
             'isLast': true
         };
         self.row.push(obj);
-        $http.get("http://localhost:5000/getRepository").then(function (response) {
+        $http.get("https://json-yaml-generator.herokuapp.com//getRepository").then(function (response) {
             self.repository = response.data.data;
         });
     };
@@ -128,8 +128,8 @@ app.controller('formController', function ($scope, $http) {
                 description: self.taskDescription
             }
         };
-        $http.post("http://localhost:5000/generate", payload).then(function (response) {
-            $http.get("http://localhost:5000/getRepository").then(function (response) {
+        $http.post("https://json-yaml-generator.herokuapp.com//generate", payload).then(function (response) {
+            $http.get("https://json-yaml-generator.herokuapp.com//getRepository").then(function (response) {
                 self.repository = response.data.data;
                 $('#generateModal').modal('toggle');
             });
@@ -149,7 +149,7 @@ app.controller('formController', function ($scope, $http) {
             }
         }
         if (varFlag) {
-            $http.post("http://localhost:5000/getTask", taskArray).then(function (response) {
+            $http.post("https://json-yaml-generator.herokuapp.com//getTask", taskArray).then(function (response) {
                 if (response.data.status == "ERROR") { }
                 else {
                     self.generateSubModule(response.data.data);
@@ -170,8 +170,8 @@ app.controller('formController', function ($scope, $http) {
     };
 
     self.removeTask = function () {
-        $http.delete("http://localhost:5000/removeItem?taskId=" + self.clickedTask).then(function (response) {
-            $http.get("http://localhost:5000/getRepository").then(function (response) {
+        $http.delete("https://json-yaml-generator.herokuapp.com//removeItem?taskId=" + self.clickedTask).then(function (response) {
+            $http.get("https://json-yaml-generator.herokuapp.com//getRepository").then(function (response) {
                 self.repository = response.data.data;
                 $('#removeModal').modal('toggle');
             });
