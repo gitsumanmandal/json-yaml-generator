@@ -20,4 +20,24 @@ OR
 
 use the git clone command to clone it to a particular folder (for now, let's place it in DEMO folder), such as-
 
-git clone https://github.com/gitsumanmandal/json-yaml-generator DEMO_folder_path
+`git clone https://github.com/gitsumanmandal/json-yaml-generator DEMO_folder_path`
+
+and then run the below commands -
+
+`npm install`
+
+`npm start`
+
+# Prerequisite
+1. You must have installed NODE JS
+2. replace all the occurrence of `https://json-yaml-generator.herokuapp.com` to `localhost:5000`. The GIT code is deployed in heroku, hence you need to change the host details. Remember, in your case, the localhost PORT may differ (5000 is hard coded). Please see app.js for HOST PORT configuration
+
+# Deployed Live
+You may find the deployed product [HERE](https://json-yaml-generator.herokuapp.com/workspace/entrypoint-view/) <br/>
+This is a Free Heroku App Server
+
+# Summary
+One can use this tool for above mentioned purpose as well as for education of Full Stack Application Development using Node JS, Express JS, Angular JS
+
+# Author
+Suman Mandal
