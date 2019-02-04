@@ -8,6 +8,6 @@ For advanced developers, for ANSIBLE, one can create tasks and put them into one
 
 # Technology Stack
 
-For front end development, normal HTML, CSS, JS, JQuery is ther, along with MVC architecture, Angular JS, Bootstrap
-For backend development, Node JS is used, with Express JS framework
+For front end development, normal HTML, CSS, JS, JQuery is ther, along with MVC architecture, Angular JS, Bootstrap.
+For backend development, Node JS is used, with Express JS framework.
 *NO DB USED (JSON FILES USED TO STORE DATA)
