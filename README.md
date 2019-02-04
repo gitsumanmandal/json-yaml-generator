@@ -28,6 +28,8 @@ and then run the below commands -
 
 `npm start`
 
+Then hit `localhost:5000\workspace\entrypoint-view` into any browser to launch the application
+
 # Prerequisite
 1. You must have installed NODE JS
 2. replace all the occurrence of `https://json-yaml-generator.herokuapp.com` to `localhost:5000`. The GIT code is deployed in heroku, hence you need to change the host details. Remember, in your case, the localhost PORT may differ (5000 is hard coded). Please see app.js for HOST PORT configuration
